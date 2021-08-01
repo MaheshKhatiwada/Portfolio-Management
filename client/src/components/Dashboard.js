@@ -12,7 +12,7 @@ function Dashboard({stockName}) {
             setFilteredData(data);
         }
         getOverallData();
-    },[])
+    },[filteredData])
    ;
 
     const calculateTotalUnit=()=>{

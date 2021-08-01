@@ -18,7 +18,7 @@ function StockTable() {
             }
         }
         getData();
-    },[])
+    },[tableInfo])
 
     return (
         <div className="stockTable">

@@ -1,5 +1,6 @@
 import React,{useState,useEffect} from 'react';
-import axios from "../axios.js";
+//import axios from "../axios.js";
+import axios from 'axios';
 import "../css/Dashboard.css";
 
 function Dashboard({stockName}) {
@@ -22,7 +23,7 @@ function Dashboard({stockName}) {
         return totalUnit;
 
     }
-            
+
     const calculateTotalInvestment=()=>{
         let totalInvestment=0;
         for(let i=0;i<filteredData.length;i++){
@@ -38,7 +39,7 @@ function Dashboard({stockName}) {
         }
         return soldAmount;
     }
-    
+
     const calculateCurrentAmount=()=>{
         let finalCurrentAmount=0;
 
@@ -65,19 +66,19 @@ function Dashboard({stockName}) {
         return totalUnit;
 
     }
-               
+
     const individualTotalInvestment=(stock)=>{
         let buyAmt=0;
         for(let i=0;i<(stock.transactionType).length;i++){
             if(stock.transactionType[i]==="Buy"){
                 buyAmt+=stock.numberOfStock[i]*stock.pricePerUnit[i];
-                
+
             }
         }
-     return buyAmt;  
+     return buyAmt;
      }
-            
-            
+
+
     const individualSoldAmount=(stock)=>{
         let sellAmt=0;
         for(let i=0;i<(stock.transactionType).length;i++){
@@ -85,7 +86,7 @@ function Dashboard({stockName}) {
                 sellAmt+=stock.numberOfStock[i]*stock.pricePerUnit[i];
             }
         }
-        return sellAmt;  
+        return sellAmt;
     }
 
     const individualCurrentValue=(stock)=>{
@@ -93,7 +94,7 @@ function Dashboard({stockName}) {
         let sellUnit=0;
         let currentUnit=0;
         let currentValue=0;
-        
+
         for(let i=0; i<(stock.transactionType).length;i++){
             if(stock.transactionType[i]==="Buy"){
                 buyUnit+=stock.numberOfStock[i];
@@ -107,7 +108,7 @@ function Dashboard({stockName}) {
         for(let i=0;i<stockName.length;i++){
             if(stockName[i].name===stock._id){
             currentValue=  ((stockName[i].currentPerUnitPrice))*currentUnit;
-            
+
             }
             }
         return currentValue;
@@ -120,7 +121,7 @@ function Dashboard({stockName}) {
         const profit =(soldValue-investmentValue+currentValue);
         return profit;
     }
-        
+
     return (
         <div className="dashboard">
             <h3>Overall Stock Information</h3>
@@ -177,6 +178,6 @@ function Dashboard({stockName}) {
         )):null}
         </div>
     )
-        
- } 
+
+ }
 export default Dashboard

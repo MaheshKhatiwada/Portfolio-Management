@@ -1,17 +1,18 @@
 import React,{useState,useEffect} from 'react'
 import { toast } from 'react-toastify';
-import axios from "../axios.js";
+//import axios from "../axios.js";
+import axios from 'axios';
 import "../css/StockTable.css";
 
 function StockTable() {
     const [tableInfo,setTableInfo]=useState("");
-    
+
     useEffect(()=>{
         async function getData(){
             try {
                 const {data}= await axios.get("/stocks")
-                setTableInfo(data);  
-                
+                setTableInfo(data);
+
             } catch (error) {
                 toast.error(error.message);
             }
@@ -46,10 +47,10 @@ function StockTable() {
                     <td>{stock.transactionDate.slice(0,10)}</td>
                     </tr>
                     )):null}
-   
+
                 </tbody>
             </table>
-            
+
         </div>
     )
 }

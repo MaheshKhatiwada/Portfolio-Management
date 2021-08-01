@@ -1,6 +1,6 @@
-
 import React ,{useState} from 'react'
-import axios from '../axios.js';
+//import axios from '../axios.js';
+import axios from 'axios';
 import "../css/StockForm.css";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -36,7 +36,7 @@ function StockForm({stockName}) {
             });
              toast.success("Form submitted successfully!!!");
             history.push("/dashboard");
-            
+
         } catch (error) {
             toast.error(("Form Submission failed"));
         }
@@ -46,16 +46,16 @@ function StockForm({stockName}) {
         if(stock.name.length===""
             ||stock.numberOfStock===""
             || stock.transactionType===""
-            || stock.pricePerUnit==="" 
+            || stock.pricePerUnit===""
             || stock.transactionDate===""){
-           
+
           return true;
         }
         else{
             return false;
         }
     }
-   
+
     return (
         <div className="stockForm">
             <form className="stockForm__form" onSubmit={handleSubmit}>
@@ -63,7 +63,7 @@ function StockForm({stockName}) {
                 <br/>
                 <select name="name" id="name" value={stock.name} onChange={handleChange} required>
                     <option value="" disabled>Choose stock names</option>
-                    {stockName.map((name)=> 
+                    {stockName.map((name)=>
                     <option key={name._id}>{name.name}</option>
                      )}
                 </select>
@@ -75,30 +75,30 @@ function StockForm({stockName}) {
                 </select>
                 <br/>
 
-                <input 
+                <input
                     type="number"
                     name="numberOfStock"
-                    id="numberOfStock" 
+                    id="numberOfStock"
                     placeholder="Enter number of stock"
                     value={stock.numberOfStock}
                     onChange={handleChange} min="1" required
                 />
                 <br/>
 
-                <input 
-                    type="number" 
-                    name="pricePerUnit" 
-                    id="pricePerUnit" 
-                    placeholder="Buying/Selling Price"  
+                <input
+                    type="number"
+                    name="pricePerUnit"
+                    id="pricePerUnit"
+                    placeholder="Buying/Selling Price"
                     value={stock.pricePerUnit}
                     onChange={handleChange}
                      min ="5"required
                 />
                 <br/>
 
-                <input 
-                    type="date" 
-                    name="transactionDate" 
+                <input
+                    type="date"
+                    name="transactionDate"
                     id="transactionDate"
                     value={stock.transactionDate}
                     onChange={handleChange}
@@ -115,4 +115,4 @@ function StockForm({stockName}) {
 
 export default StockForm;
 
-  
+

@@ -6,7 +6,8 @@ import Dashboard from './components/Dashboard'
 import StockTable from "./components/StockTable";
 import {BrowserRouter,Switch,Route} from "react-router-dom";
 import { toast, ToastContainer } from 'react-toastify';
-import axios from "./axios";
+//import axios from "./axios";
+import axios from 'axios';
 
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
         setStockName(data);
       } catch (error) {
         toast.error(error.message);
-        } 
+        }
       }
     getResult();
     },[])
@@ -27,7 +28,7 @@ function App() {
     <React.Fragment>
       <BrowserRouter>
         <Navbar/>
-  
+
          <Switch>
            <Route path="/stockTable">
                <StockTable/>
@@ -38,7 +39,7 @@ function App() {
              />
            </Route>
            <Route path="/">
-             <Dashboard 
+             <Dashboard
              stockName={stockName}/>
           </Route>
          </Switch>
